@@ -1,0 +1,116 @@
+import java.util.Scanner;
+
+public class GeometrySolver {
+
+    // 2D shapes
+    static double areaCircle(double r) { return Math.PI * r * r; }
+    static double perimeterCircle(double r) { return 2 * Math.PI * r; }
+    static double areaSquare(double s) { return s * s; }
+    static double perimeterSquare(double s) { return 4 * s; }
+    static double areaRectangle(double l, double w) { return l * w; }
+    static double perimeterRectangle(double l, double w) { return 2 * (l + w); }
+    static double areaTriangle(double b, double h) { return 0.5 * b * h; }
+
+    // 3D shapes
+    static double volumeSphere(double r) { return (4.0/3) * Math.PI * Math.pow(r, 3); }
+    static double surfaceAreaSphere(double r) { return 4 * Math.PI * r * r; }
+    static double volumeCube(double s) { return s * s * s; }
+    static double surfaceAreaCube(double s) { return 6 * s * s; }
+    static double volumeCylinder(double r, double h) { return Math.PI * r * r * h; }
+    static double surfaceAreaCylinder(double r, double h) { return 2 * Math.PI * r * (r + h); }
+    static double volumeCone(double r, double h) { return (1.0/3) * Math.PI * r * r * h; }
+    static double surfaceAreaCone(double r, double h) {
+        double l = Math.sqrt(r * r + h * h);
+        return Math.PI * r * (r + l);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Geometry Solver ");
+        System.out.println("1. 2D Shapes\n2. 3D Shapes");
+        System.out.print("Enter 1 or 2: ");
+        int choice = sc.nextInt();
+
+        if (choice == 1) {
+            System.out.println("2D Shapes:\n1. Circle\n2. Square\n3. Rectangle\n4. Triangle");
+            System.out.print("Choose shape (1–4): ");
+            int shape = sc.nextInt();
+
+            switch (shape) {
+                case 1:
+                    System.out.print("Enter radius: ");
+                    double r = sc.nextDouble();
+                    System.out.printf("Area = %.2f\n", areaCircle(r));
+                    System.out.printf("Perimeter = %.2f\n", perimeterCircle(r));
+                    break;
+                case 2:
+                    System.out.print("Enter side: ");
+                    double s = sc.nextDouble();
+                    System.out.printf("Area = %.2f\n", areaSquare(s));
+                    System.out.printf("Perimeter = %.2f\n", perimeterSquare(s));
+                    break;
+                case 3:
+                    System.out.print("Enter length: ");
+                    double l = sc.nextDouble();
+                    System.out.print("Enter width: ");
+                    double w = sc.nextDouble();
+                    System.out.printf("Area = %.2f\n", areaRectangle(l, w));
+                    System.out.printf("Perimeter = %.2f\n", perimeterRectangle(l, w));
+                    break;
+                case 4:
+                    System.out.print("Enter base: ");
+                    double b = sc.nextDouble();
+                    System.out.print("Enter height: ");
+                    double h = sc.nextDouble();
+                    System.out.printf("Area = %.2f\n", areaTriangle(b, h));
+                    break;
+                default:
+                    System.out.println("Invalid shape.");
+            }
+
+        } else if (choice == 2) {
+            System.out.println("3D Shapes:\n1. Sphere\n2. Cube\n3. Cylinder\n4. Cone");
+            System.out.print("Choose shape (1–4): ");
+            int shape = sc.nextInt();
+
+            switch (shape) {
+                case 1:
+                    System.out.print("Enter radius: ");
+                    double r = sc.nextDouble();
+                    System.out.printf("Volume = %.2f\n", volumeSphere(r));
+                    System.out.printf("Surface Area = %.2f\n", surfaceAreaSphere(r));
+                    break;
+                case 2:
+                    System.out.print("Enter side: ");
+                    double s = sc.nextDouble();
+                    System.out.printf("Volume = %.2f\n", volumeCube(s));
+                    System.out.printf("Surface Area = %.2f\n", surfaceAreaCube(s));
+                    break;
+                case 3:
+                    System.out.print("Enter radius: ");
+                    double rC = sc.nextDouble();
+                    System.out.print("Enter height: ");
+                    double hC = sc.nextDouble();
+                    System.out.printf("Volume = %.2f\n", volumeCylinder(rC, hC));
+                    System.out.printf("Surface Area = %.2f\n", surfaceAreaCylinder(rC, hC));
+                    break;
+                case 4:
+                    System.out.print("Enter radius: ");
+                    double rCone = sc.nextDouble();
+                    System.out.print("Enter height: ");
+                    double hCone = sc.nextDouble();
+                    System.out.printf("Volume = %.2f\n", volumeCone(rCone, hCone));
+                    System.out.printf("Surface Area = %.2f\n", surfaceAreaCone(rCone, hCone));
+                    break;
+                default:
+                    System.out.println("Invalid shape.");
+            }
+
+        } else {
+            System.out.println("Invalid input.");
+        }
+
+        sc.close();
+    }
+}
